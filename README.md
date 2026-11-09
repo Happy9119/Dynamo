@@ -1,21 +1,23 @@
 # DYNAMO
 
 DYNAMO is an external attack surface management and VAPT reconnaissance tool. It runs a configurable pipeline of open source recon tools, correlates their output, scores risk per asset, and presents results in a local dashboard backed by PostgreSQL.
-It is intended for authorized security testing, penetration testing engagements, and continuous monitoring of assets you own or have written permission to test.
 
+It is intended for authorized security testing, penetration testing engagements, and continuous monitoring of assets you own or have written permission to test.
 
 ## What it does
 
 The pipeline runs in two modes.
 
-Quick mode:
+**Quick mode:**
+
 - Passive subdomain discovery (subfinder, crt.sh)
 - Historical URL collection (gau, wayback)
 - Live host probing (httpx)
 - Port and service scanning (nmap)
 - Correlation and risk scoring
 
-Full mode adds:
+**Full mode adds:**
+
 - Web crawling (katana)
 - Directory fuzzing (ffuf)
 - Vulnerability scanning (nuclei)
@@ -23,9 +25,7 @@ Full mode adds:
 - Passive and active VAPT checks (headers, CORS, methods, sensitive files, parameter probes)
 - SQL injection testing (sqlmap)
 
-After a scan you can optionally run AI triage on high risk assets using a local Ollama model.
-
-All results are stored in PostgreSQL and shown in a Streamlit dashboard.
+After a scan you can optionally run AI triage on high risk assets using a local Ollama model. All results are stored in PostgreSQL and shown in a Streamlit dashboard.
 
 ## Requirements
 
@@ -48,39 +48,42 @@ Ollama is only required for AI enrichment.
 
 ## Install
 
-1. Clone the repo and enter it.
+Clone the repo and enter it:
 
     git clone https://github.com/Happy9119/dynamo.git
     cd dynamo
 
-2. Create and activate a virtual environment.
+Create and activate a virtual environment:
 
     python3 -m venv .venv
     source .venv/bin/activate
-    # Windows: .venv\Scripts\activate
 
-3. Install Python dependencies.
+On Windows use:
+
+    .venv\Scripts\activate
+
+Install Python dependencies:
 
     pip install -r requirements.txt
 
-4. Update environment file.
+Update your environment file:
 
     .env
 
-   Set DATABASE_URL to point at your PostgreSQL instance. The default is:
+Set `DATABASE_URL` to point at your PostgreSQL instance. The default is:
 
     postgresql+psycopg://localhost/dynamo_recon
 
-5. Create the database.
+Create the database:
 
     createdb dynamo_recon
 
-6. Initialize tables.
+Initialize tables:
 
     python init_db.py
     python update_db.py
 
-7. Install the external tools. On macOS:
+Install the external tools. On macOS:
 
     brew install nmap ffuf
     brew install go
@@ -92,7 +95,7 @@ Ollama is only required for AI enrichment.
     pip install sqlmap
     nuclei -update-templates
 
-8. Optional, for AI enrichment:
+Optional, for AI enrichment:
 
     curl -fsSL https://ollama.com/install.sh | sh
     ollama pull phi3:mini
@@ -176,11 +179,11 @@ See `ARCHITECTURE.md` for a detailed map of the codebase.
 
 Pages:
 
-- Dashboard: top level summary across all targets
-- Targets: per domain drill down with findings, assets, timeline, scan diff, and PDF reports
-- Exposure: cross domain findings browser
-- Launchpad: start scans, run AI enrichment, change model settings, view scan history, admin tools
-- Scan Output: browse and download raw artifacts per scan
+- **Dashboard**: top level summary across all targets
+- **Targets**: per domain drill down with findings, assets, timeline, scan diff, and PDF reports
+- **Exposure**: cross domain findings browser
+- **Launchpad**: start scans, run AI enrichment, change model settings, view scan history, admin tools
+- **Scan Output**: browse and download raw artifacts per scan
 
 ## Legal
 
