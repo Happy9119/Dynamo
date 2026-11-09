@@ -1,0 +1,32 @@
+{
+  "Apache HTTP Server:2.4.25": [
+    {"cve": "CVE-2019-0211", "severity": "critical", "cvss": 9.8,
+     "description": "Apache privilege escalation vulnerability."},
+    {"cve": "CVE-2018-1312", "severity": "high", "cvss": 8.1,
+     "description": "Apache authentication bypass vulnerability."}
+  ],
+  "PHP:7.1.26": [
+    {"cve": "CVE-2019-11043", "severity": "critical", "cvss": 9.8,
+     "description": "PHP-FPM remote code execution vulnerability."}
+  ],
+  "IIS:8.5": [
+    {"cve": "CVE-2021-31166", "severity": "critical", "cvss": 9.8,
+     "description": "HTTP Protocol Stack remote code execution."}
+  ],
+  "Microsoft ASP.NET:2.0.50727": [
+    {"cve": "CVE-2017-8759", "severity": "high", "cvss": 7.5,
+     "description": ".NET Framework remote code execution vulnerability."}
+  ],
+  "Nginx:1.16.1": [
+    {"cve": "CVE-2019-20372", "severity": "medium", "cvss": 6.5,
+     "description": "Nginx error_page request smuggling vulnerability."}
+  ],
+  "WordPress:5.7.2": [
+    {"cve": "CVE-2021-29447", "severity": "high", "cvss": 8.1,
+     "description": "WordPress XXE vulnerability via media library."}
+  ],
+  "Jenkins:2.263.1": [
+    {"cve": "CVE-2021-21611", "severity": "high", "cvss": 8.8,
+     "description": "Jenkins missing permission check allows credential theft."}
+  ]
+}
